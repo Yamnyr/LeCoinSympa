@@ -38,11 +38,20 @@ const AdvertisementDetail = () => {
     return (
         <div className="advertisement-detail-container">
             <div className="advertisement-detail-card">
+                {/* Ajout de l'image */}
+                {advertisement.images && (
+                    <img
+                        src={advertisement.images}
+                        alt={advertisement.title}
+                        className="advertisement-image"
+                        style={{ width: '100%', maxHeight: '400px', objectFit: 'cover', marginBottom: '20px' }}
+                    />
+                )}
                 <h1 className="advertisement-title">{advertisement.title}</h1>
                 <p className="advertisement-description">{advertisement.description}</p>
                 <p className="advertisement-price">Prix : <span>{advertisement.price} €</span></p>
                 <p className="advertisement-category">Catégorie : <span>{advertisement.category.name}</span></p>
-                <p className="advertisement-author">Publié par : <span>{advertisement.author.email}</span></p>
+                <p className="advertisement-author">Publié par : <span>{advertisement.author.username}</span></p>
             </div>
         </div>
     );

@@ -24,6 +24,7 @@ const AdvertisementForm = ({ modalType, advertisement, categories, onSubmit, onC
                     value={advertisement.price}
                     onChange={(e) => onChange({...advertisement, price: e.target.value})}
                     required
+                    min="0"
                 />
                 <select
                     value={advertisement.category}
@@ -37,6 +38,13 @@ const AdvertisementForm = ({ modalType, advertisement, categories, onSubmit, onC
                         </option>
                     ))}
                 </select>
+                {/* Nouveau champ pour l'URL de l'image */}
+                <input
+                    type="text"
+                    placeholder="URL de l'image"
+                    value={advertisement.images || ""}
+                    onChange={(e) => onChange({...advertisement, images: e.target.value})}
+                />
                 <button type="submit">{modalType === 'create' ? "Créer" : "Mettre à jour"}</button>
             </form>
         </div>

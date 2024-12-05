@@ -5,19 +5,20 @@ const Category = require('../models/categoryModel');
 // Créer une nouvelle annonce
 exports.createAdvertisement = async (req, res) => {
     try {
-        const { title, description, price, category } = req.body;
+        const { title, description, price, category, images } = req.body;
 
         // Récupérer l'ID de l'utilisateur depuis le token JWT
         const token = req.headers.authorization.split(' ')[1];
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        const authorId = decoded.id; // Utilisez `id` au lieu de `userId`
+        const authorId = decoded.id;
 
         const newAdvertisement = new Advertisement({
             title,
             description,
             price,
             category,
-            author: authorId
+            author: authorId,
+            images // Utilisation directe des URLs passées dans le corps
         });
 
         const savedAdvertisement = await newAdvertisement.save();
@@ -31,6 +32,7 @@ exports.createAdvertisement = async (req, res) => {
     }
 };
 
+
 // Obtenir toutes les annonces avec filtrage par catégorie
 exports.getAllAdvertisements = async (req, res) => {
     try {
@@ -43,7 +45,7 @@ exports.getAllAdvertisements = async (req, res) => {
 
         const advertisements = await Advertisement.find(query)
             .populate('category', 'name')
-            .populate('author', 'email');
+            .populate('author', 'username');
 
         res.status(200).json(advertisements);
     } catch (error) {
@@ -64,7 +66,7 @@ exports.getAdvertisementById = async (req, res) => {
 
         const advertisement = await Advertisement.findById(id)
             .populate('category', 'name')
-            .populate('author', 'email');
+            .populate('author', 'username');
 
         if (!advertisement) {
             return res.status(404).json({ message: 'Annonce non trouvée' });
@@ -83,11 +85,11 @@ exports.getAdvertisementById = async (req, res) => {
 exports.updateAdvertisement = async (req, res) => {
     try {
         const { id } = req.params;
-        const { title, description, price, category, status } = req.body;
+        const { title, description, price, category, status, images } = req.body;
 
         const updatedAdvertisement = await Advertisement.findByIdAndUpdate(
             id,
-            { title, description, price, category, status },
+            { title, description, price, category, status, images },
             { new: true, runValidators: true }
         ).populate('category author', 'name email');
 

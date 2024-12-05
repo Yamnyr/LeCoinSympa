@@ -43,10 +43,10 @@ const AdvertisementSchema = new mongoose.Schema({
         enum: ['active', 'sold', 'archived'],
         default: 'active'
     },
-    images: [{
+    images: {
         type: String,
         trim: true
-    }]
+    }
 });
 
 AdvertisementSchema.pre('save', function (next) {
