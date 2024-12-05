@@ -2,11 +2,11 @@ import React from 'react';
 // import PlayerManagement from './Components/PlayerManagement';
 import Wrapper from './Components/Wrapper';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import Login from "./Pages/Login";
-import Register from "./Pages/Register";
-import Home from "./Pages/Home";
-import User from "./Pages/User";
-import AdvertisementDetail from "./Pages/AdvertisementDetail";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Home from "./pages/Home";
+import User from "./pages/User";
+import AdvertisementDetail from "./pages/AdvertisementDetail";
 
 function App() {
   return (
