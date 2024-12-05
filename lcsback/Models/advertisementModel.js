@@ -12,7 +12,7 @@ const AdvertisementSchema = new mongoose.Schema({
         type: String,
         required: true,
         trim: true,
-        minlength: 10,
+        minlength: 1,
         maxlength: 1000
     },
     price: {

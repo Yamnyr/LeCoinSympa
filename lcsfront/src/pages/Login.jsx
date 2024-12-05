@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -21,7 +22,6 @@ const Login = () => {
                 email,
             });
 
-            // Si l'utilisateur est connecté, sauvegardez le token dans localStorage
             localStorage.setItem("token", response.data.token);
             navigate("/home");
         } catch (error) {
@@ -32,9 +32,9 @@ const Login = () => {
     };
 
     return (
-        <div className="login-container">
+        <div className="auth-container login-container">
             <h2>Connexion</h2>
-            <form onSubmit={handleSubmit} className="login-form">
+            <form onSubmit={handleSubmit} className="auth-form login-form">
                 <div className="form-group">
                     <label htmlFor="email">Email:</label>
                     <input

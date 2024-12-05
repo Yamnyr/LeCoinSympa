@@ -40,9 +40,9 @@ const Register = () => {
     };
 
     return (
-        <div className="register-container">
+        <div className="auth-container register-container">
             <h2>Inscription</h2>
-            <form onSubmit={handleSubmit} className="register-form">
+            <form onSubmit={handleSubmit} className="auth-form register-form">
                 <div className="form-group">
                     <label htmlFor="username">Nom d'utilisateur:</label>
                     <input
@@ -99,7 +99,7 @@ const Register = () => {
             </form>
 
             <p>
-                Vous avez déjà un compte? <a href="/login">Se connecter</a>
+                Vous avez déjà un compte? <a href="/">Se connecter</a>
             </p>
         </div>
     );

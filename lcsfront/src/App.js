@@ -2,9 +2,11 @@ import React from 'react';
 // import PlayerManagement from './Components/PlayerManagement';
 import Wrapper from './Components/Wrapper';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import Home from "./pages/Home";
+import Login from "./Pages/Login";
+import Register from "./Pages/Register";
+import Home from "./Pages/Home";
+import User from "./Pages/User";
+import AdvertisementDetail from "./Pages/AdvertisementDetail";
 
 function App() {
   return (
@@ -15,7 +17,8 @@ function App() {
               <Route path="/" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/home" element={<Home />} />
-              {/*<Route path="/players" element={<PlayerManagement />} />*/}
+              <Route path="/user" element={<User />} />
+              <Route path="/advertisement/:id" element={<AdvertisementDetail />} /> {/* Route pour la page des détails */}
             </Routes>
           </Wrapper>
         </BrowserRouter>
